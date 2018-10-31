@@ -57,4 +57,28 @@ describe("Thermostat", function() {
     expect(thermostat.currentTemperature()).toEqual(32)
   });
 
+  it("should reset the temperature to 20", function() {
+    thermostat.up()
+    thermostat.reset()
+    expect(thermostat.currentTemperature()).toEqual(20)
+  })
+
+  it("should say low-usage if temperature is below 18", function(){
+    thermostat.down()
+    thermostat.down()
+    thermostat.down()
+    expect(thermostat.energyUsage()).toEqual('low-usage')
+  })
+
+  it("should say medium-usage if temperature is below 20", function(){
+    expect(thermostat.energyUsage()).toEqual('medium-usage')
+  })
+
+  it("should say high-usage if temperature is above 25", function(){
+    for (var i = 0; i < 6; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.energyUsage()).toEqual('high-usage')
+  })
+
 })
