@@ -20,15 +20,18 @@ $(document).ready(function() {
   $('#powersaving-off').click(function() {
     thermostat.switchPowerSavingModeOff();
     $('#power-saving-status').text('off');
+    updateTemperature();
   })
 
   $('#powersaving-on').click(function() {
     thermostat.switchPowerSavingModeOn();
     $('#power-saving-status').text('on');
+    updateTemperature();
   })
 
   function updateTemperature() {
     $('#temperature').text(thermostat.temperature);
+    $('#temperature').attr('class', thermostat.energyUsage());
   }
 
 })
