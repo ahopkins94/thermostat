@@ -1,6 +1,5 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
-  updateTemperature();
 
   function savedThermostatTemperature() {
     var temperature = thermostat.temperature

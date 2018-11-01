@@ -2,6 +2,10 @@ require 'pg'
 
 class Thermostat
 
+  def initialize(temperature:)
+    @temperature = temperature
+  end
+
   def self.temperature
     con = PG.connect(dbname: 'thermostat_manager')
     con.exec("SELECT temperature FROM thermostat_temperature WHERE id = 1;")
