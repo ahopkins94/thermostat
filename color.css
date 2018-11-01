@@ -1,3 +1,33 @@
+body {
+  background-color: AntiqueWhite;
+  max-width: 500px;
+  margin: auto;
+}
+
+h1 {
+  color: Maroon;
+  font-family: "Comic Sans MS"
+}
+
+p {
+  color: Maroon;
+  font-family: "Comic Sans MS"
+}
+
+form {
+  padding: 12px 20px;
+}
+
+#temperature {
+  color: Maroon;
+  font-family: "Comic Sans MS"
+}
+
+#current-city {
+  border: 2px solid Black;
+  border-radius: 4px;
+}
+
 .low-usage {
   color: green;
 }
