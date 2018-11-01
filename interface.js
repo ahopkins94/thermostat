@@ -2,19 +2,29 @@ $(document).ready(function() {
   var thermostat = new Thermostat();
   updateTemperature();
 
+  function savedThermostatTemperature() {
+    var temperature = thermostat.temperature
+    $.get('http://localhost:4567/', function(data) {
+      $('#temperature').text(data);
+    })
+  }
+
   $('#temperature-up').click(function() {
       thermostat.up();
       updateTemperature();
+      saveThermostatTemperature();
   })
 
   $('#temperature-down').click(function () {
     thermostat.down();
     updateTemperature();
+    saveThermostatTemperature();
   })
 
   $('#temperature-reset').click(function () {
     thermostat.reset();
     updateTemperature();
+    saveThermostatTemperature();
   })
 
   $('#powersaving-off').click(function() {
@@ -41,5 +51,10 @@ $(document).ready(function() {
     $('#current-temperature').text(data.main.temp);
   })
 })
+
+function saveThermostatTemperature() {
+  var temperature = thermostat.temperature
+  $.post('http://localhost:4567/?temperature='+temperature)
+}
 
 })
